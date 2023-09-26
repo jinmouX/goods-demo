@@ -44,5 +44,17 @@ class StockBizTest {
 
         stockBiz.distinctStock(stock).forEach(System.out::println);
     }
+    @Test
+    public void distinctStockTest2(){
+        List<Stock> stock = new ArrayList<>();
+        stock.add(new Stock(1001L,"苹果",5));
+        stock.add(new Stock(1002L,"小米",10));
+        stock.add(new Stock(1003L,"华为",5));
+        stock.add(new Stock(1001L,"苹果",5));
+        stock.add(new Stock(1003L,"华为",5));
+        stock.add(new Stock(1004L,"天音",10));
+
+        stockBiz.distinctStock2(stock).forEach(System.out::println);
+    }
 
 }

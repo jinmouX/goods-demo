@@ -65,4 +65,26 @@ public class StockBiz {
         log.info("去重后:{}",newStockList);
         return newStockList;
     }
+
+    public List<Stock> distinctStock2(List<Stock> StockList){
+        log.info("去重前:{}",StockList);
+        Map<Long,Stock> StockMap = new HashMap<>();
+        for (Stock stock : StockList) {
+            Long id = stock.getGoodsId();
+            if(StockMap.containsKey(id)){
+                Stock s = StockMap.get(id);
+                s.setNumber(s.getNumber()+stock.getNumber());
+            }else {
+                StockMap.put(id, stock);
+            }
+        }
+
+        // 构建新的集合
+        List<Stock> newStockList = new ArrayList<>();
+        for (Map.Entry<Long,Stock> entry : StockMap.entrySet()) {
+            newStockList.add(entry.getValue());
+        }
+        log.info("去重后:{}",newStockList);
+        return newStockList;
+    }
 }
